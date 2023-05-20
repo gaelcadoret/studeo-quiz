@@ -30,20 +30,46 @@ const enrichResponse = async (response) => {
 
 const enrichUserResponseWithResult = async (userResponses) => Promise.all(userResponses.map(enrichResponse));
 
+const getQuestionLabel = async (questionId) => {
+    const questionRes = await findById("questions", questionId);
+    return questionRes.question;
+}
+
+const getAnswerLabel = async (answerId) => {
+    const answerRes = await findById("answers", answerId);
+    return answerRes.answer;
+}
+
+const getUsersResponses = async (userId, questionId) => await find("user_answers", {
+    userId,
+    questionId,
+});
+
+const enrichLabels = async (userResponse) => {
+    const questionLabel = await getQuestionLabel(userResponse.questionId);
+    const answerLabel = await getAnswerLabel(userResponse.answerId);
+
+    return {
+        ...userResponse,
+        questionLabel,
+        answerLabel,
+    }
+};
+
 const getUserResponseByQuestionId = async (req, res) => {
     if (!isValidParamsUserResponse(req.params)) return sendErrorResponse(res, 400, "Bad request");
 
     const { userId, questionId } = req.params;
 
-    const userResponses = await find("user_answers", {
-        userId,
-        questionId,
-    });
+    const userResponses = await getUsersResponses(userId, questionId);
 
     const userResponsesWithResult = await enrichUserResponseWithResult(userResponses);
 
+    const results = await Promise.all(
+        userResponsesWithResult.map(enrichLabels)
+    );
 
-    sendSuccessResponse(res, userResponsesWithResult);
+    sendSuccessResponse(res, results);
 };
 
 const insertUserResponse = async (req, res) => {
