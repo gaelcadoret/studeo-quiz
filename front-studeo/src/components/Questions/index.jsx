@@ -1,7 +1,7 @@
 import { Question } from "./Question";
 import axios from "axios";
 
-export const Questions = ({data}) => {
+export const Questions = ({data, updateScore}) => {
 
 
     return data.map(({_id, question, responses}, idx) => (
@@ -10,7 +10,7 @@ export const Questions = ({data}) => {
             title={question}
             choices={responses}
             key={`question_${idx}`}
-            // onSubmitResponse={onSubmitResponse}
+            updateScore={updateScore}
         />
     ));
 }

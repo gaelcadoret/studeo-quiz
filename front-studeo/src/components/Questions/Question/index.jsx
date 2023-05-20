@@ -4,7 +4,7 @@ import {Button} from "../../Button";
 import {useRef, useState} from "react";
 import axios from "axios";
 
-export const Question = ({id, title, choices}) => {
+export const Question = ({id, title, choices, updateScore}) => {
     const userResponseInput = useRef(undefined);
     const [choice, setChoice] = useState(undefined);
     const [isError, setIsError] = useState(false);
@@ -24,6 +24,8 @@ export const Question = ({id, title, choices}) => {
             } else {
                 userResponseInput.current.innerText = "Mauvaise réponse :(";
             }
+
+            updateScore(questionId, res.data.data.isValidResponse);
         };
 
         sendResponse(questionId, choice);

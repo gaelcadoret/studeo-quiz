@@ -35,6 +35,17 @@
   display: none;
 }
 
+.fixed {
+  position: fixed;
+  top: 0px;
+  margin-top: 0 !important;
+  background: whitesmoke;
+}
+
+.form {
+  margin-top: 180px;
+}
+
 .error {
   margin-top: 1em;
   display: block;
