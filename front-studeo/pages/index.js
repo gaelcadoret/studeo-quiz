@@ -3,6 +3,7 @@ import axios from 'axios';
 import styles from '../styles/Home.module.css';
 import { useEffect, useState } from "react";
 import { Questions } from "../src/components/Questions";
+import { Gauge } from "../src/components/Gauge";
 
 export default function Home() {
   const [questions, setQuestions] = useState([]);
@@ -18,6 +19,21 @@ export default function Home() {
 
   }, []);
 
+  // const onSubmitResponse = (questionId, choice) => {
+  //     console.log("[index] onSubmitResponse")
+  //     // console.log("questionId", questionId);
+  //     // console.log("choice", choice);
+  //     const sendResponse = async (questionId, choice) => {
+  //         const res = await axios.post(`http://localhost:8080/user-answers/${questionId}`, {
+  //             userId: "6462ad7d9d00319a3e060a0b",
+  //             answerId: choice,
+  //         });
+  //         console.log("res", res.data.data.isValidResponse);
+  //     };
+  //
+  //     sendResponse(questionId, choice);
+  // }
+
   return (
     <div className={styles.container}>
       <Head>
@@ -26,12 +42,28 @@ export default function Home() {
       </Head>
 
       <main>
-        <h1 className={styles.title}>
-          Welcome to our Node JS quizz!
-        </h1>
+        <div className={styles.grid}>
+            <h1 className={`${styles.title} ${styles.card}`}>
+                Welcome to our Node JS quizz!
+            </h1>
+            <div className={`${styles.card} ${styles.result}`}>
+                <Gauge
+                    style={{ margin: '0 auto 20px auto' }}
+                    radius={75}
+                    value={50}
+                    onClick={() => {
+                        // this.setState({ value1: Math.random() * 100 });
+                    }}
+                />
+            </div>
+        </div>
+
 
         <div>
-          <Questions data={questions} />
+            <Questions
+                data={questions}
+                // onSubmitResponse={onSubmitResponse}
+            />
         </div>
       </main>
 

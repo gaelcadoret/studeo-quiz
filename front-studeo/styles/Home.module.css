@@ -7,6 +7,15 @@
   align-items: center;
 }
 
+/*h1.title {*/
+/*  position: fixed;*/
+/*  top: 0px;*/
+/*  height: 130px;*/
+/*  background: whitesmoke;*/
+/*  width: 100%;*/
+/*  padding-top: 20px;*/
+/*}*/
+
 .title a {
   color: #0070f3;
   text-decoration: none;
@@ -18,10 +27,38 @@
   text-decoration: underline;
 }
 
+.show {
+  display: block;
+}
+
+.hidden {
+  display: none;
+}
+
+.error {
+  margin-top: 1em;
+  display: block;
+  padding: 1em;
+  border: 1px solid #CC0000 !important;
+  color: #CC0000 !important;
+  font-weight: bold;
+}
+
+.success {
+  margin-top: 1em;
+  display: block;
+  padding: 1em;
+  border: 1px solid #00AA00 !important;
+  color: #00AA00 !important;
+  font-weight: bold;
+}
+
 .title {
   margin: 0 0 1rem;
   line-height: 1.15;
   font-size: 3.6rem;
+  width: 1024px;
+  max-width: 70%;
 }
 
 .title {
@@ -33,6 +70,9 @@
   text-align: center;
 }
 
+.result {
+  max-width: 20%;
+}
 
 .description {
   line-height: 1.5;
@@ -45,13 +85,13 @@
   justify-content: center;
   flex-wrap: wrap;
 
-  max-width: 800px;
+  max-width: 1200px;
   margin-top: 3rem;
 }
 
 .card {
   margin: 1rem;
-  flex-basis: 45%;
+  /*flex-basis: 45%;*/
   padding: 1.5rem;
   text-align: left;
   color: inherit;
