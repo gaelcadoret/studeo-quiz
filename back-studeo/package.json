@@ -1,0 +1,30 @@
+{
+  "name": "express-ms",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "engines": {
+    "node": "16"
+  },
+  "scripts": {
+    "init:env": "cp .env.override .env",
+    "test": "jest",
+    "test:cov": "jest --coverage",
+    "start": "node bin/www/index.js",
+    "init:db": "mongorestore --uri=\"mongodb://admin:password@172.17.0.2:27017/?authSource=admin&readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false\" -d studeo ./dump/studeo",
+    "dump": "mongodump --uri=\"mongodb://admin:password@172.17.0.2:27017/?authSource=admin&readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false\" -d studeo -o ./dump"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.2",
+    "express": "^4.18.1",
+    "express-jwt": "^7.7.5",
+    "fakebase": "^0.3.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongodb": "^5.5.0"
+  }
+}

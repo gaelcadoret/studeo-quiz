@@ -1,0 +1,18 @@
+[
+  {
+    "id": "uogQAZnLcAlT6lMuNbpQg",
+    "firstName": "Gael",
+    "lastName": "Cadoret",
+    "email": "gaelcadoret21@gmail.com",
+    "role": "ADMIN",
+    "password": "Gael123"
+  },
+  {
+    "id": "i0Nn6qvicHP5DTuKTyaq0",
+    "firstName": "Bob",
+    "lastName": "Dupond",
+    "email": "bob@goobook.co",
+    "role": "USER",
+    "password": "bob123"
+  }
+]
