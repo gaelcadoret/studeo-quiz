@@ -10,7 +10,7 @@
   "scripts": {
     "init:env": "cp .env.override .env",
     "test": "NODE_OPTIONS=--experimental-vm-modules npx jest",
-    "test:cov": "jest --coverage",
+    "test:cov": "NODE_OPTIONS=--experimental-vm-modules npx jest --coverage",
     "start": "node bin/www/index.js",
     "init:db": "mongorestore --uri=\"mongodb://admin:password@172.17.0.2:27017/?authSource=admin&readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false\" -d studeo ./dump/studeo",
     "dump": "mongodump --uri=\"mongodb://admin:password@172.17.0.2:27017/?authSource=admin&readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false\" -d studeo -o ./dump"

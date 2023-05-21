@@ -24,6 +24,16 @@ yarn init:db
 yarn start
 ```
 
+## V - Run unit tests
+```sh
+yarn test
+```
+
+## VI - Run code coverage
+```sh
+yarn test:cov
+```
+
 ## Middleware
 To add some more **global** middleware, you'll have to update the file `./src/index.js`
 

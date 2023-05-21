@@ -21,6 +21,18 @@ describe('helpers', () => {
             expect(hasOwnProperty(person, 'age')).toBe(false);
 
         });
+
+        it('hasOwnProperty function should works even if prototype method has been overriden', () => {
+            const person = {
+                firstName: 'Gael',
+                lastName: 'Cadoret',
+                hasOwnProperty: () => "Hey dude, don't use prototype methods of an object! It's overridable!"
+            };
+
+            expect(hasOwnProperty(person, 'firstName')).toBe(true);
+            expect(hasOwnProperty(person, 'age')).toBe(false);
+
+        });
     });
 
     describe('buildResponse', () => {
